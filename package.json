@@ -1,0 +1,14 @@
+{
+  "name": "proyectokk",
+  "version": "1.0.0",
+  "description": "Este sera el proyecto para la clase de desarrollo, app web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GG",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.22.3"
+  }
+}
