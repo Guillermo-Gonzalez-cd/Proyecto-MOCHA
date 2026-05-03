@@ -1,0 +1,58 @@
+DUEÑOS
+{
+  "nombre": "Juan Perez",
+  "correo": "juan@email.com",
+  "telefono": "88888888"
+}
+MASCOTAS
+{
+  "nombre": "Luna",
+  "especie": "Perro",
+  "raza": "Labrador",
+  "sexo": "Hembra",
+  "peso": 12.5,
+  "edad": 3,
+  "dueno_id": 1
+}
+MEDICAMENTOS
+{
+  "mascota_id": 1,
+  "nombre": "Antibiótico",
+  "dosis": "2 veces al día",
+  "fecha_inicio": "2026-05-01",
+  "fecha_fin": "2026-05-10"
+}
+HISTORIAL
+{
+  "mascota_id": 1,
+  "diagnostico": "Fiebre",
+  "tratamiento": "Paracetamol",
+  "fecha": "2026-05-02"
+}
+VACUNAS
+{
+  "mascota_id": 1,
+  "nombre": "Rabia",
+  "fecha": "2026-05-03"
+}
+RECODATORIOS
+{
+  "mascota_id": 1,
+  "tipo": "Vacuna",
+  "fecha": "2026-05-10",
+  "notificado": false
+}
+ALIMENTACION
+{
+  "mascota_id": 1,
+  "peso": 12.5,
+  "edad": 3,
+  "cantidad_diaria": 300
+}
+CICLO
+{
+  "mascota_id": 1,
+  "fecha_inicio": "2026-05-01",
+  "fecha_fin": "2026-05-07",
+  "prediccion": "2026-06-01"
+}

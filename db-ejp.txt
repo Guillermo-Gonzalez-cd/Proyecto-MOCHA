@@ -1,0 +1,75 @@
+CREATE DATABASE mascotas_db;
+USE mascotas_db;
+
+CREATE TABLE duenos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100),
+  correo VARCHAR(100),
+  telefono VARCHAR(20)
+);
+
+CREATE TABLE mascotas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100),
+  especie VARCHAR(50),
+  raza VARCHAR(50),
+  sexo VARCHAR(20),
+  peso FLOAT,
+  edad INT,
+  dueno_id INT,
+  FOREIGN KEY (dueno_id) REFERENCES duenos(id)
+);
+
+CREATE TABLE medicamentos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  nombre VARCHAR(100),
+  dosis VARCHAR(50),
+  fecha_inicio DATE,
+  fecha_fin DATE,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
+
+CREATE TABLE historial_medico (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  diagnostico TEXT,
+  tratamiento TEXT,
+  fecha DATE,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
+
+CREATE TABLE vacunas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  nombre VARCHAR(100),
+  fecha DATE,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
+
+CREATE TABLE recordatorios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  tipo VARCHAR(50),
+  fecha DATE,
+  notificado BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
+
+CREATE TABLE alimentacion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  peso FLOAT,
+  edad INT,
+  cantidad_diaria FLOAT,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
+
+CREATE TABLE ciclo_reproductivo (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT,
+  fecha_inicio DATE,
+  fecha_fin DATE,
+  prediccion DATE,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
+);
