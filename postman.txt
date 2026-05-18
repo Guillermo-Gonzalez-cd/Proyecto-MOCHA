@@ -1,10 +1,35 @@
-DUEÑOS
+== AUTENTICACION (publicas) ==
+
+POST /register
 {
   "nombre": "Juan Perez",
   "correo": "juan@email.com",
+  "password": "123456",
   "telefono": "88888888"
 }
-MASCOTAS
+
+POST /login
+{
+  "correo": "juan@email.com",
+  "password": "123456"
+}
+Respuesta: { "status": "success", "token": "eyJ..." }
+
+== RUTAS PROTEGIDAS ==
+Todas requieren header:
+Authorization: Bearer <token>
+
+== USERS ==
+GET    /users
+GET    /users/:id
+POST   /users
+PUT    /users/:id
+DELETE /users/:id
+
+== MASCOTAS ==
+GET    /mascotas
+GET    /mascotas/:id
+POST   /mascotas
 {
   "nombre": "Luna",
   "especie": "Perro",
@@ -12,47 +37,85 @@ MASCOTAS
   "sexo": "Hembra",
   "peso": 12.5,
   "edad": 3,
-  "dueno_id": 1
+  "user_id": 1
 }
-MEDICAMENTOS
+PUT    /mascotas/:id
+DELETE /mascotas/:id
+
+== MEDICAMENTOS ==
+GET    /medicamentos
+GET    /medicamentos/:id
+POST   /medicamentos
 {
   "mascota_id": 1,
-  "nombre": "Antibiótico",
-  "dosis": "2 veces al día",
+  "nombre": "Antibiotico",
+  "dosis": "2 veces al dia",
   "fecha_inicio": "2026-05-01",
   "fecha_fin": "2026-05-10"
 }
-HISTORIAL
+PUT    /medicamentos/:id
+DELETE /medicamentos/:id
+
+== HISTORIAL_MEDICO ==
+GET    /historial_medico
+GET    /historial_medico/:id
+POST   /historial_medico
 {
   "mascota_id": 1,
   "diagnostico": "Fiebre",
   "tratamiento": "Paracetamol",
   "fecha": "2026-05-02"
 }
-VACUNAS
+PUT    /historial_medico/:id
+DELETE /historial_medico/:id
+
+== VACUNAS ==
+GET    /vacunas
+GET    /vacunas/:id
+POST   /vacunas
 {
   "mascota_id": 1,
   "nombre": "Rabia",
   "fecha": "2026-05-03"
 }
-RECODATORIOS
+PUT    /vacunas/:id
+DELETE /vacunas/:id
+
+== RECORDATORIOS ==
+GET    /recordatorios
+GET    /recordatorios/:id
+POST   /recordatorios
 {
   "mascota_id": 1,
   "tipo": "Vacuna",
   "fecha": "2026-05-10",
   "notificado": false
 }
-ALIMENTACION
+PUT    /recordatorios/:id
+DELETE /recordatorios/:id
+
+== ALIMENTACION ==
+GET    /alimentacion
+GET    /alimentacion/:id
+POST   /alimentacion
 {
   "mascota_id": 1,
   "peso": 12.5,
   "edad": 3,
   "cantidad_diaria": 300
 }
-CICLO
+PUT    /alimentacion/:id
+DELETE /alimentacion/:id
+
+== CICLO_REPRODUCTIVO ==
+GET    /ciclo_reproductivo
+GET    /ciclo_reproductivo/:id
+POST   /ciclo_reproductivo
 {
   "mascota_id": 1,
   "fecha_inicio": "2026-05-01",
   "fecha_fin": "2026-05-07",
   "prediccion": "2026-06-01"
 }
+PUT    /ciclo_reproductivo/:id
+DELETE /ciclo_reproductivo/:id

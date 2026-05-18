@@ -5,25 +5,17 @@
   "main": "app.js",
   "scripts": {
     "dev": "node --watch app.js",
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "GG",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^2.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.22.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Guillermo-Gonzalez-cd/Proyecto-KK.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Guillermo-Gonzalez-cd/Proyecto-KK/issues"
-  },
-  "homepage": "https://github.com/Guillermo-Gonzalez-cd/Proyecto-KK#readme",
-  "keywords": [],
-  "devDependencies": {}
+  }
 }
