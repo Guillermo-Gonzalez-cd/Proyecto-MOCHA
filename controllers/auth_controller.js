@@ -3,44 +3,42 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // registro de nuevo usuario
-exports.register = (req, res, next) => {
-  const { nombre, correo, password, telefono } = req.body;
+exports.register = async (req, res, next) => {
+  try {
+    const { nombre, correo, password, telefono } = req.body;
 
-  if (!nombre || !correo || !password) {
-    return res.status(400).json({ status: 'error', message: 'Nombre, correo y password son requeridos' });
-  }
+    if (!nombre || !correo || !password) {
+      return res.status(400).json({ status: 'error', message: 'Nombre, correo y password son requeridos' });
+    }
 
-  // verificar si el correo ya existe
-  db.query('SELECT id FROM users WHERE correo = ?', [correo], (err, results) => {
-    if (err) return next(err);
-    if (results.length > 0) {
+    // verificar si el correo ya existe
+    const [existing] = await db.query('SELECT id FROM users WHERE correo = ?', [correo]);
+    if (existing.length > 0) {
       return res.status(400).json({ status: 'error', message: 'El correo ya esta registrado' });
     }
 
     // encriptar password
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) return next(err);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-      const newUser = { nombre, correo, password: hashedPassword, telefono: telefono || null };
+    const newUser = { nombre, correo, password: hashedPassword, telefono: telefono || null };
+    const [result] = await db.query('INSERT INTO users SET ?', newUser);
 
-      db.query('INSERT INTO users SET ?', newUser, (err, result) => {
-        if (err) return next(err);
-        res.status(201).json({ status: 'success', message: 'Usuario registrado', id: result.insertId });
-      });
-    });
-  });
+    res.status(201).json({ status: 'success', message: 'Usuario registrado', id: result.insertId });
+  } catch (error) {
+    next(error);
+  }
 };
 
 // login de usuario
-exports.login = (req, res, next) => {
-  const { correo, password } = req.body;
+exports.login = async (req, res, next) => {
+  try {
+    const { correo, password } = req.body;
 
-  if (!correo || !password) {
-    return res.status(400).json({ status: 'error', message: 'Correo y password son requeridos' });
-  }
+    if (!correo || !password) {
+      return res.status(400).json({ status: 'error', message: 'Correo y password son requeridos' });
+    }
 
-  db.query('SELECT * FROM users WHERE correo = ?', [correo], (err, results) => {
-    if (err) return next(err);
+    const [results] = await db.query('SELECT * FROM users WHERE correo = ?', [correo]);
 
     // mismo mensaje para usuario no encontrado o password incorrecta (seguridad)
     if (results.length === 0) {
@@ -48,21 +46,21 @@ exports.login = (req, res, next) => {
     }
 
     const user = results[0];
+    const isValid = await bcrypt.compare(password, user.password);
 
-    bcrypt.compare(password, user.password, (err, isValid) => {
-      if (err) return next(err);
-      if (!isValid) {
-        return res.status(401).json({ status: 'error', message: 'Correo o password invalidos' });
-      }
+    if (!isValid) {
+      return res.status(401).json({ status: 'error', message: 'Correo o password invalidos' });
+    }
 
-      // generar token JWT
-      const token = jwt.sign(
-        { id: user.id, correo: user.correo, rol: user.rol },
-        process.env.JWT_SECRET,
-        { expiresIn: '24h' }
-      );
+    // generar token JWT
+    const token = jwt.sign(
+      { id: user.id, correo: user.correo, rol: user.rol },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
 
-      res.json({ status: 'success', token });
-    });
-  });
+    res.json({ status: 'success', token });
+  } catch (error) {
+    next(error);
+  }
 };

@@ -1,16 +1,25 @@
 require('dotenv').config();
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: process.env.DB_PASSWORD,
   database: 'mascotas_db'
 });
 
-db.connect(err => {
-  if (err) throw err;
-  console.log('MySQL conectado');
-});
+// verifica que la conexion funcione al iniciar
+async function connectDB() {
+  try {
+    const connection = await db.getConnection();
+    console.log('MySQL conectado y funcionando');
+    connection.release();
+  } catch (error) {
+    console.error('Error al conectar con MySQL:', error.message);
+    process.exit(1);
+  }
+}
+
+connectDB();
 
 module.exports = db;
