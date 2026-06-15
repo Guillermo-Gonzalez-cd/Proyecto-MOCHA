@@ -75,3 +75,24 @@ CREATE TABLE ciclo_reproductivo (
   prediccion DATE,
   FOREIGN KEY (mascota_id) REFERENCES mascotas(id)
 );
+
+-- bloques de tiempo disponibles para citas (solo el admin los crea)
+CREATE TABLE bloques_tiempo (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  fecha DATE NOT NULL,
+  hora_inicio TIME NOT NULL,
+  hora_fin TIME NOT NULL,
+  disponible BOOLEAN DEFAULT TRUE
+);
+
+-- citas medicas de mascotas vinculadas a un bloque de tiempo
+CREATE TABLE citas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  mascota_id INT NOT NULL,
+  bloque_tiempo_id INT NOT NULL,
+  motivo VARCHAR(255),
+  estado ENUM('pendiente', 'confirmada', 'cancelada') DEFAULT 'pendiente',
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (mascota_id) REFERENCES mascotas(id),
+  FOREIGN KEY (bloque_tiempo_id) REFERENCES bloques_tiempo(id)
+);

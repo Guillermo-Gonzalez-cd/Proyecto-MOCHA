@@ -1,6 +1,6 @@
 {
   "name": "proyecto-mocha",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Este sera el proyecto para la clase de desarrollo, app web",
   "main": "server.js",
   "scripts": {
