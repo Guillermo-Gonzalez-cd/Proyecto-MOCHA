@@ -1,11 +1,11 @@
 {
   "name": "proyecto-mocha",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Este sera el proyecto para la clase de desarrollo, app web",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "node --watch app.js",
-    "start": "node app.js",
+    "dev": "node --watch server.js",
+    "start": "node server.js",
     "seed": "node prisma/seed.js"
   },
   "author": "GG",
