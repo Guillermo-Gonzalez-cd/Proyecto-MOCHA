@@ -1,0 +1,291 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #d8d0ee;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 1200px;
+  height: 760px;
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 15px 40px rgba(105, 0, 255, 0.15);
+}
+
+/* =======================
+   PANEL IZQUIERDO
+======================= */
+
+.left-panel {
+  flex: 1;
+  background: linear-gradient(180deg, #6900ff, #4f00c7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 0 30px;
+}
+
+.logo {
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.left-panel img {
+  width: 100%;
+  max-width: 650px;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  margin-top: auto;
+  display: block;
+}
+
+/* =======================
+   PANEL DERECHO
+======================= */
+
+.right-panel {
+  flex: 1;
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel h2 {
+  font-size: 52px;
+  text-align: center;
+  color: #1f1f1f;
+  margin-bottom: 10px;
+}
+
+.register-text {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.register-text span {
+  color: #6900ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-text span:hover {
+  text-decoration: underline;
+}
+
+/* =======================
+   INPUTS
+======================= */
+
+.right-panel input[type="text"],
+.right-panel input[type="email"],
+.right-panel input[type="password"] {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #dcdcdc;
+  border-radius: 35px;
+  padding: 0 20px;
+  font-size: 16px;
+  margin-bottom: 18px;
+  outline: none;
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.right-panel input:focus {
+  border-color: #6900ff;
+  box-shadow: 0 0 10px rgba(105, 0, 255, 0.15);
+}
+
+/* =======================
+   ERROR
+======================= */
+
+.login-error {
+  color: #e02424;
+  font-size: 14px;
+  margin: -10px 0 15px 8px;
+}
+
+/* =======================
+   CHECKBOX
+======================= */
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  color: #555;
+  font-size: 16px;
+}
+
+.remember input {
+  width: 18px;
+  height: 18px;
+  accent-color: #6900ff;
+}
+
+/* =======================
+   BOTÓN
+======================= */
+
+.login-btn {
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 35px;
+  background: linear-gradient(90deg, #6900ff, #8a2bff);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(105, 0, 255, 0.25);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =======================
+   ENLACE
+======================= */
+
+.forgot {
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.forgot:hover {
+  color: #6900ff;
+}
+
+/* =======================
+   REDES SOCIALES
+======================= */
+
+.social-pronto {
+  margin-top: 14px;
+  text-align: center;
+  color: #6900ff;
+  font-size: 13px;
+  font-weight: 500;
+  background: #f0ebff;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+
+.social-title {
+  text-align: center;
+  margin: 20px 0 16px;
+  color: #666;
+  font-size: 14px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.socials button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #333;
+}
+
+.socials button:hover {
+  transform: translateY(-3px);
+  border-color: #6900ff;
+  box-shadow: 0 4px 12px rgba(105, 0, 255, 0.15);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media (max-width: 900px) {
+  .login-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel {
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 42px;
+  }
+
+  .left-panel img {
+    max-width: 300px;
+    height: auto;
+  }
+
+  .right-panel {
+    padding: 40px 25px;
+  }
+
+  .right-panel h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 500px) {
+  .right-panel h2 {
+    font-size: 28px;
+  }
+
+  .register-text {
+    font-size: 15px;
+  }
+
+  .socials button {
+    width: 48px;
+    height: 48px;
+  }
+}

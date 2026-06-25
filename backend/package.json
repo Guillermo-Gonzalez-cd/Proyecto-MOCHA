@@ -1,0 +1,32 @@
+{
+  "name": "proyecto-mocha",
+  "version": "1.0.4",
+  "description": "Este sera el proyecto para la clase de desarrollo, app web",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "seed": "node prisma/seed.js"
+  },
+  "author": "GG",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.22.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guillermo-Gonzalez-cd/Proyecto-MOCHA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Guillermo-Gonzalez-cd/Proyecto-MOCHA/issues"
+  },
+  "homepage": "https://github.com/Guillermo-Gonzalez-cd/Proyecto-MOCHA#readme"
+}

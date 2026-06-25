@@ -1,0 +1,244 @@
+/* Veterinarias.css — hereda .home, .sidebar, .main-content de Home.css */
+
+/* TOP BAR */
+.vet-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+.vet-topbar-left { display: flex; align-items: center; gap: 14px; }
+.vet-topbar-icon { font-size: 20px; color: #6900FF; background: #f0ebff; padding: 12px; border-radius: 14px; }
+.vet-topbar-left h1 { font-size: 26px; color: #222; }
+.vet-topbar-left p  { color: #777; font-size: 14px; margin-top: 4px; }
+
+/* STATS */
+.vet-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; margin-bottom: 26px; }
+.vet-stat-card { border-radius: 18px; padding: 22px; display: flex; justify-content: space-between; align-items: center; }
+.vet-stat-card svg { font-size: 28px; opacity: 0.6; }
+.vet-stat-card strong { font-size: 28px; display: block; }
+.vet-stat-card p { font-size: 13px; margin-top: 4px; font-weight: 600; }
+.vet-stat-purple { background: #f0ebff; color: #6900FF; }
+.vet-stat-green  { background: #e6f9ee; color: #19a463; }
+.vet-stat-orange { background: #fff3e0; color: #e08a00; }
+
+/* FILTRO BAR */
+.vet-filtro-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.vet-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.vet-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 14px;
+}
+
+.vet-search {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  transition: .2s;
+}
+
+.vet-search:focus { border-color: #6900FF; box-shadow: 0 0 0 3px rgba(105,0,255,.08); }
+
+/* CHIPS */
+.vet-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.vet-chip {
+  background: white;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  color: #555;
+  transition: .2s;
+  white-space: nowrap;
+}
+
+.vet-chip:hover      { border-color: #6900FF; color: #6900FF; }
+.vet-chip-active     { background: #6900FF; color: white; border-color: #6900FF; }
+
+/* TOGGLE */
+.vet-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.vet-toggle {
+  width: 40px;
+  height: 22px;
+  background: #e0e0e0;
+  border-radius: 30px;
+  position: relative;
+  transition: .3s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.vet-toggle-on { background: #6900FF; }
+
+.vet-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+.vet-toggle-on .vet-toggle-knob { left: 21px; }
+
+/* GRID */
+.vet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.vet-card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s, border-color .2s;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vet-card:hover      { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(0,0,0,.09); }
+.vet-card-selected   { border-color: #6900FF; box-shadow: 0 0 0 4px rgba(105,0,255,.1); }
+
+/* CARD HEADER */
+.vet-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vet-card-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #f0ebff;
+  color: #6900FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.vet-card-title { flex: 1; }
+.vet-card-title h3 { font-size: 15px; color: #222; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+
+.vet-especialidad-tag {
+  font-size: 11px;
+  font-weight: 700;
+  background: #f0ebff;
+  color: #6900FF;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.vet-card-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+
+.vet-badge-mocha {
+  font-size: 10px;
+  font-weight: 800;
+  background: #6900FF;
+  color: white;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.vet-badge-estado {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vet-open   { background: #e6f9ee; color: #19a463; }
+.vet-closed { background: #fde9ea; color: #e5484d; }
+
+/* DESCRIPCION */
+.vet-desc { font-size: 13px; color: #777; line-height: 1.5; margin: 0; }
+
+/* INFO ROWS */
+.vet-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.vet-info-row svg { color: #6900FF; font-size: 13px; flex-shrink: 0; }
+
+/* FOOTER */
+.vet-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.vet-estrellas { display: flex; align-items: center; gap: 3px; }
+.vet-estrellas svg { font-size: 13px; }
+.vet-rating-num { font-size: 13px; font-weight: 700; color: #222; margin-left: 4px; }
+
+.vet-btn-llamar {
+  background: #6900FF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.vet-btn-llamar:hover { background: #5500cc; transform: translateY(-1px); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .vet-grid { grid-template-columns: 1fr; }
+  .vet-filtro-bar { flex-direction: column; align-items: stretch; }
+  .vet-search-wrap { min-width: unset; }
+}

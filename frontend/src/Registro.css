@@ -1,0 +1,28 @@
+/* Hereda toda la base de Login.css */
+/* Solo agregamos lo específico del registro */
+
+.registro-card {
+  height: auto;
+  min-height: 720px;
+}
+
+.registro-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registro-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.registro-row input {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .registro-row {
+    grid-template-columns: 1fr;
+  }
+}
