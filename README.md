@@ -1,106 +1,62 @@
-# Proyecto MOCHA — App de gestión de mascotas
+# Proyecto MOCHA — App movil de agente para la salud de sus mascotas.
 
-Este repositorio une las dos partes del proyecto en una sola carpeta:
+## 1. Descripción del Proyecto
 
-```
+El Proyecto MOCHA es una plataforma tecnológica orientada a la gestión de la salud preventiva y bienestar integral de animales de compañía. El sistema centraliza el control del historial clínico veterinario, la automatización de alertas sanitarias y el monitoreo nutricional personalizado, optimizando el seguimiento médico por parte de los propietarios.
+
+La arquitectura del proyecto está compuesta por una aplicación frontend desarrollada en React con Vite y una API backend construida en Express que interactúa con un motor de base de datos MySQL.
+
+## 2. Estructura del Repositorio
+
+El repositorio unifica los componentes de software en el siguiente esquema de directorios:
+
+```text
 mocha-unificado/
-├── frontend/   → App React + Vite (interfaz de usuario)
-├── backend/    → API Express + MySQL (lógica y base de datos)
-└── package.json → scripts de conveniencia para correr ambos
+├── frontend/     # Interfaz de usuario (React + Vite)
+├── backend/      # Lógica de negocio y persistencia de datos (Express + MySQL)
+└── package.json  # Scripts de automatización para la ejecución del entorno
 ```
 
-> **Nota:** las carpetas `node_modules` NO están incluidas. Hay que instalarlas
-> con `npm install` antes de correr el proyecto (instrucciones abajo).
+Nota: Los directorios `node_modules` no se incluyen en el repositorio. Deben instalarse localmente antes de iniciar los servicios.
 
-## 1. Requisitos
+## 3. Requisitos del Sistema
 
-- Node.js (v18 o superior recomendado)
-- MySQL instalado y corriendo localmente
+Para el despliegue del entorno de desarrollo se requiere:
+* Node.js (Versión 18 o superior recomendada)
+* MySQL Server activo en el entorno local
 
-## 2. Instalación
+## 4. Instalación y Configuración
 
-Desde la carpeta raíz (`mocha-unificado/`), instala las dependencias de
-ambos proyectos con un solo comando:
+### 4.1 Instalación de Dependencias
+Ejecute el siguiente comando desde la raíz del proyecto (`mocha-unificado/`) para instalar de forma simultánea los paquetes requeridos por el frontend y el backend:
 
 ```bash
 npm run install:all
 ```
 
-Esto corre `npm install` tanto en `frontend/` como en `backend/`.
+### 4.2 Inicialización de la Base de Datos
+1. Importe el esquema de la base de datos en su servidor MySQL local utilizando el script provisto:
 
-## 3. Configurar la base de datos
+```bash
+mysql -u root -p < backend/database.sql
+```
 
-1. Crea la base de datos en MySQL usando el script SQL incluido en el
-   backend:
-   ```bash
-   mysql -u root -p < backend/database.sql
-   ```
-2. Copia el archivo de ejemplo de variables de entorno y complétalo con tus
-   propios datos (usuario, contraseña, etc.):
-   ```bash
-   cp backend/.env-ejp backend/.env
-   ```
-   Luego abre `backend/.env` y ajusta los valores reales (contraseña de la
-   base de datos, secreto JWT, puerto, etc.).
+2. Configure las credenciales de conexión y variables de entorno del backend tomando como referencia el archivo de configuración base `seed.js`.
 
-   ⚠️ **Nunca subas el archivo `.env` a un repositorio público** — contiene
-   credenciales. El `.gitignore` del backend ya lo excluye por defecto.
+## 5. Ejecución del Entorno de Desarrollo
 
-## 4. Cómo correr el proyecto
+El proyecto dispone de dos modalidades de ejecución desde el directorio raíz:
 
-### Opción A — Todo en un solo comando (recomendado para el día a día)
-
-Desde la raíz del proyecto, con un solo comando se levantan backend y
-frontend juntos, en la misma terminal:
+### Opción 1: Ejecución en Paralelo (Recomendado)
+Para iniciar los servidores de desarrollo de frontend y backend de manera independiente:
 
 ```bash
 npm run dev
 ```
 
-Vas a ver la salida de ambos servidores mezclada, diferenciada por color y
-una etiqueta (`BACKEND` / `FRONTEND`). Para detener los dos a la vez, basta
-con `Ctrl + C` una sola vez en esa terminal.
-
-- El backend quedará disponible en `http://localhost:3000` (o el puerto que
-  hayas definido en `.env`).
-- El frontend (Vite) quedará disponible normalmente en
-  `http://localhost:5173`. Esa es la URL que debes abrir en el navegador.
-
-### Opción B — Dos terminales separadas (si prefieres verlos por separado)
-
-En dos terminales distintas, desde la raíz del proyecto:
-
-```bash
-npm run dev:backend
-```
-```bash
-npm run dev:frontend
-```
-
-El resultado es el mismo que la Opción A, solo que cada servidor imprime
-sus mensajes en su propia ventana.
-
-El frontend debe hacer sus peticiones a la URL del backend (revisa que las
-llamadas `fetch`/`axios` en `frontend/src` apunten a
-`http://localhost:3000`).
-
-### Opción C — Todo en un solo servidor (para entregar como una sola app)
-
-Si quieres que el backend sirva también el frontend ya compilado, de modo
-que todo viva en una sola URL:
+### Opción 2: Ejecución Integrada
+Para levantar ambos servicios de forma conjunta bajo un mismo proceso de Express:
 
 ```bash
 npm start
 ```
-
-Esto primero compila el frontend (`vite build`, genera `frontend/dist`) y
-luego levanta el backend, el cual detecta automáticamente la carpeta
-`frontend/dist` y la sirve junto con la API. Solo necesitas visitar la URL
-del backend (por ejemplo `http://localhost:3000`) para ver la app completa.
-
-## 5. Estructura de la base de datos
-
-El archivo `backend/database.sql` crea las tablas: `duenos`, `mascotas`,
-`medicamentos`, `historial_medico`, `vacunas`, `recordatorios` y
-`alimentacion` — todo lo necesario para la gestión de mascotas que se ve
-en las pantallas del frontend (Mis Mascotas, Salud, Agenda).

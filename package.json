@@ -13,6 +13,17 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guillermo-Gonzalez-cd/Mocha_full.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guillermo-Gonzalez-cd/Mocha_full/issues"
+  },
+  "homepage": "https://github.com/Guillermo-Gonzalez-cd/Mocha_full#readme"
 }
-

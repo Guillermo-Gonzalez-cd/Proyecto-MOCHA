@@ -7,7 +7,7 @@ import Home from "./Home";
 import MisMascotas from "./MisMascotas";
 import Agenda from "./Agenda";
 import Salud from "./Salud";
-import Admin from "./Admin";
+//import Admin from "./Admin";
 import { getUsuarioActual, cerrarSesion } from "./api";
 import Beneficios   from "./Beneficios";
 import Veterinarias from "./Veterinarias";
@@ -48,7 +48,7 @@ function App() {
   if (pantallaActual === "mascotas")      return <MisMascotas  {...navProps} />;
   if (pantallaActual === "agenda")        return <Agenda       {...navProps} />;
   if (pantallaActual === "salud")         return <Salud        {...navProps} />;
-  if (pantallaActual === "admin")         return <Admin        {...navProps} />;
+  //if (pantallaActual === "admin")         return <Admin        {...navProps} />;
   if (pantallaActual === "beneficios")    return <Beneficios   {...navProps} />;
   if (pantallaActual === "veterinarias")  return <Veterinarias {...navProps} />;
   if (pantallaActual === "reportes")      return <Reportes     {...navProps} />;

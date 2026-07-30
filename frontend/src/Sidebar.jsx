@@ -18,7 +18,7 @@ const ITEMS = [
   { id: "salud",    label: "Salud",        Icon: FaHeartbeat      },
   { id: "mocha-ia", label: "Mocha IA",     Icon: BsRobot          },
   { id: "beneficios",  label: "Beneficios",   Icon: FaGift        },
-  { id: "veterinarias",label: "Veterinarias", Icon: MdPets        },
+  //{ id: "veterinarias",label: "Veterinarias", Icon: MdPets        },
   { id: "reportes", label: "Reportes",     Icon: MdOutlineAnalytics },
   { id: "ajustes",  label: "Ajustes",      Icon: FaCog            },
 ];
@@ -46,16 +46,6 @@ function Sidebar({ activo, onNavigate, onLogout, usuario }) {
             <span>{label}</span>
           </div>
         ))}
-
-        {esAdmin && (
-          <div
-            className={`menu-item${activo === "admin" ? " active" : ""}`}
-            onClick={() => onNavigate("admin")}
-          >
-            <FaUserShield />
-            <span>Admin</span>
-          </div>
-        )}
 
         <div className="menu-item menu-item-logout" onClick={onLogout}>
           <FaSignOutAlt />

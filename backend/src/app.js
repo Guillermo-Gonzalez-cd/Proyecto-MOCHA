@@ -26,7 +26,7 @@ if (fs.existsSync(frontendDistPath)) {
 
   // cualquier ruta que no sea de la API devuelve el index.html del frontend
   // (necesario para que el enrutamiento del lado del cliente funcione)
-  app.get('*', (req, res) => {
+  app.get('/*any', (req, res) => {
     res.sendFile(path.join(frontendDistPath, 'index.html'));
   });
 }
